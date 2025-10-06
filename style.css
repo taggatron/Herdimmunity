@@ -1,0 +1,65 @@
+/* Basic reset and theme */
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #22c55e;
+  --accent-2: #3b82f6;
+  --infected: #ef4444;
+  --recovered: #f59e0b;
+  --vaccinated: #22c55e;
+  --susceptible: #64748b;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+header, footer { text-align: center; padding: 1rem; }
+header h1 { margin: 0.2rem 0; }
+.tagline { color: var(--muted); margin-top: 0; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+.controls {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.control-group label { display: block; font-weight: 700; margin-bottom: 0.3rem; }
+.control-group small { color: var(--muted); }
+.control-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
+.control-row .inline { display: inline-flex; align-items: center; gap: 0.4rem; }
+button { background: var(--accent-2); color: white; border: none; padding: 0.5rem 0.8rem; border-radius: 8px; cursor: pointer; }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+input[type="range"], select { width: 180px; }
+
+.sim-and-stats { display: grid; gap: 1rem; grid-template-columns: 1fr 320px; margin-top: 1rem; }
+.canvas-wrap { background: var(--panel); border-radius: 12px; padding: 0.5rem; position: relative; }
+.legend { margin-top: 0.5rem; display: flex; gap: 1rem; color: var(--muted); font-size: 0.9rem; }
+.dot { width: 12px; height: 12px; display: inline-block; border-radius: 50%; margin-right: 6px; }
+.dot.susceptible { background: var(--susceptible); }
+.dot.vaccinated { background: var(--vaccinated); }
+.dot.infected { background: var(--infected); }
+.dot.recovered { background: var(--recovered); }
+
+.stats { background: var(--panel); border-radius: 12px; padding: 1rem; }
+.stats h2 { margin-top: 0; }
+.chart-wrap { background: #0b1022; border-radius: 8px; padding: 0.5rem; }
+.threshold { color: var(--muted); }
+
+.explain { background: var(--panel); border-radius: 12px; padding: 1rem; margin-top: 1rem; }
+.explain h2, .explain h3 { margin-top: 0.6rem; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sim-and-stats { grid-template-columns: 1fr; }
+  #simCanvas { width: 100%; height: auto; }
+}
